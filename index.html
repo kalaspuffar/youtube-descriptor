@@ -2,14 +2,91 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Youtube descriptor</title>
   </head>
+  <style>
+    html,body {
+      margin: 0;
+      padding: 0;      
+    }  
+
+    .main_container {
+      align-items: flex-start;
+      justify-content: flex-start;
+      display: flex;      
+      flex-direction: row;
+    }
+
+    #list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      border-right: 2px solid #eee;
+    }
+
+    #list li {
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #aaa;       
+    }
+
+    .list_container {
+      overflow-y: scroll;
+      height: 100vh;
+      width: 300px;      
+    }
+
+    .item_content {
+      padding: 20px 30px;
+    }
+
+    .item_content input {
+      font-size: 16pt;
+      width: 700px;
+      padding: 5px;
+      margin: 10px 0;
+    }
+
+    .item_content textarea {      
+      padding: 5px;
+      font-size: 16pt;
+      width: 700px;
+    }
+
+    .item_content button {      
+      background: white;
+      border: 1px solid #000;
+      vertical-align: top;
+      margin-top: 16px;
+      padding: 4px;
+      font-size: 12pt;
+    }
+
+    #copy_item {
+      margin-top: 10px;
+    }
+  </style>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <div class="main_container">
+      <div class="list_container">
+        <ul id="list"></ul>
+      </div>
+      <div class="item_content">
+        <div>
+            <input id="title" placeholder="Title"/>
+            <button id="title_button">Copy</button>
+        </div>        
+        <div>
+            <textarea id="description" rows="16" placeholder="Descrition"></textarea>
+            <button id="description_button">Copy</button>
+        </div>        
+        <div>
+            <input id="tags" placeholder="Tags"/>                
+            <button id="tags_button">Copy</button>
+        </div>        
+        <button id="copy_item">Copy item</button>
+      </div>
+    </div>
 
     <script>
       // You can also require other files to run in this process
