@@ -66,6 +66,13 @@ function handleClick(e) {
     titleElement.value = video.title;
     descriptionElement.value = video.description;
     tagsElement.value = video.tags;
+
+    var allItems = document.querySelectorAll('li');
+    allItems.forEach((item) => {
+        item.className = "";
+    });
+
+    e.target.className = "selected";
 }
 
 function reload() {

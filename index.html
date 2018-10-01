@@ -27,7 +27,8 @@
     #list li {
       padding: 10px;
       margin: 10px;
-      border: 1px solid #aaa;       
+      border: 1px solid #aaa;
+      cursor: pointer;     
     }
 
     .list_container {
@@ -65,6 +66,10 @@
     #copy_item {
       margin-top: 10px;
     }
+
+    #list li.selected {
+      border: 1px solid red;
+    }
   </style>
   <body>
     <div class="main_container">
@@ -81,7 +86,7 @@
             <button id="description_button">Copy</button>
         </div>        
         <div>
-            <input id="tags" placeholder="Tags"/>                
+            <textarea id="tags" rows="3" placeholder="Tags"></textarea>                
             <button id="tags_button">Copy</button>
         </div>        
         <button id="copy_item">Copy item</button>
