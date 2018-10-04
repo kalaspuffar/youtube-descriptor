@@ -7,13 +7,13 @@
   <style>
     html,body {
       margin: 0;
-      padding: 0;      
-    }  
+      padding: 0;
+    }
 
     .main_container {
       align-items: flex-start;
       justify-content: flex-start;
-      display: flex;      
+      display: flex;
       flex-direction: row;
     }
 
@@ -28,13 +28,13 @@
       padding: 10px;
       margin: 10px;
       border: 1px solid #aaa;
-      cursor: pointer;     
+      cursor: pointer;
     }
 
     .list_container {
       overflow-y: scroll;
       height: 100vh;
-      width: 300px;      
+      width: 300px;
     }
 
     .item_content {
@@ -48,13 +48,13 @@
       margin: 10px 0;
     }
 
-    .item_content textarea {      
+    .item_content textarea {
       padding: 5px;
       font-size: 16pt;
       width: 700px;
     }
 
-    .item_content button {      
+    .item_content button {
       background: white;
       border: 1px solid #000;
       vertical-align: top;
@@ -63,13 +63,19 @@
       font-size: 12pt;
     }
 
-    #copy_item {
-      margin-top: 10px;
+    #list li.selected {
+      background-color: #ddd;
     }
 
-    #list li.selected {
-      border: 1px solid red;
+    .button_row {
+      display: flex;
+      flex-direction: row;
     }
+
+    #add_item, #copy_item, #delete_item {
+      margin: 10px 5px 0 0;
+    }
+
   </style>
   <body>
     <div class="main_container">
@@ -80,16 +86,20 @@
         <div>
             <input id="title" placeholder="Title"/>
             <button id="title_button">Copy</button>
-        </div>        
+        </div>
         <div>
             <textarea id="description" rows="16" placeholder="Descrition"></textarea>
             <button id="description_button">Copy</button>
-        </div>        
+        </div>
         <div>
-            <textarea id="tags" rows="3" placeholder="Tags"></textarea>                
+            <textarea id="tags" rows="3" placeholder="Tags"></textarea>
             <button id="tags_button">Copy</button>
-        </div>        
-        <button id="copy_item">Copy item</button>
+        </div>
+        <div class="button_row">
+          <button id="add_item">Add item</button>
+          <button id="copy_item">Copy item</button>
+          <button id="delete_item">Delete item</button>
+        </div>
       </div>
     </div>
 

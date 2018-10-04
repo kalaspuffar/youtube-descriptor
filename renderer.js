@@ -10,7 +10,10 @@ const tagsElement = document.getElementById('tags');
 const titleButton = document.getElementById('title_button');
 const descriptionButton = document.getElementById('description_button');
 const tagsButton = document.getElementById('tags_button');
+
+const addItemButton = document.getElementById('add_item');
 const copyItemButton = document.getElementById('copy_item');
+const deleteItemButton = document.getElementById('delete_item');
 
 var currentVideo = -1;
 
@@ -53,7 +56,7 @@ function updateValue(e) {
         db.get('videos')
             .find({ id: currentVideo })
             .assign({ tags: e.target.value})
-            .write();        
+            .write();
     }
 }
 
@@ -85,11 +88,28 @@ function reload() {
         element.onclick = handleClick;
         return element;
     }).forEach(element => {
-        document.getElementById('list').appendChild(element);    
-    });    
+        document.getElementById('list').appendChild(element);
+    });
 }
 
 reload();
+
+addItemButton.addEventListener('click', () => {
+    currentVideo = Math.random().toString(36);
+    db.get('videos')
+        .push({
+            id: currentVideo,
+            title: 'New item (' + currentVideo + ')',
+            description: '',
+            tags: ''
+        })
+        .write();
+    titleElement.value = 'New item (' + currentVideo + ')';
+    descriptionElement.value = '';
+    tagsElement.value = '';
+
+    reload();
+});
 
 copyItemButton.addEventListener('click', () => {
     db.get('videos')
@@ -100,5 +120,18 @@ copyItemButton.addEventListener('click', () => {
             tags: tagsElement.value
         })
         .write();
+    reload();
+});
+
+deleteItemButton.addEventListener('click', () => {
+    db.get('videos')
+        .remove({
+            id: currentVideo
+        })
+        .write();
+
+    titleElement.value = '';
+    descriptionElement.value = '';
+    tagsElement.value = '';
     reload();
 });
